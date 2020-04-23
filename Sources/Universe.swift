@@ -22,6 +22,7 @@ class Universe {
     }
     
     func play() {
+        guard paused else { return }
         paused = false
         DispatchQueue.global().async {
             while !self.paused {
