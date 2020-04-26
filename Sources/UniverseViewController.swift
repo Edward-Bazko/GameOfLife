@@ -32,21 +32,22 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
         universe.play()
     }
     
-    
-    override func loadView() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
         universeView = UniverseView(frame: UIScreen.main.bounds,
                                     columns: universe.matrix.width,
                                     rows: universe.matrix.height,
                                     cellSize: CGSize(width: cellSide, height: cellSide))
-        universeView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view = universeView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+
         universeView.dataSource = self
+        universeView.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(universeView)
+        universeView.fillSuperview()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(showPicker))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showPicker))
+        universeView.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +68,9 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
                 self.pattern = pattern
             }))
         }
+        picker.addAction(UIAlertAction(title: "Random", style: .default, handler: { _ in
+            self.universe.seed()
+        }))
         picker.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(picker, animated: true, completion: nil)
@@ -90,6 +94,10 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
     }
 }
 

@@ -41,6 +41,7 @@
 		0BB8B9B62185CDAE0024D474 /* glider.lif in Resources */ = {isa = PBXBuildFile; fileRef = 0BB8B9B12185C3680024D474 /* glider.lif */; };
 		0BB8B9B92185D0160024D474 /* gosperglidergun_106.lif in Resources */ = {isa = PBXBuildFile; fileRef = 0BB8B9B82185D0160024D474 /* gosperglidergun_106.lif */; };
 		0BB8B9BB2185D4D40024D474 /* switchengine_106.lif in Resources */ = {isa = PBXBuildFile; fileRef = 0BB8B9BA2185D4D40024D474 /* switchengine_106.lif */; };
+		0BD2BDCE245584C5005BABF0 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2BDCD245584C5005BABF0 /* UIView+Autolayout.swift */; };
 		0BF7E91721824C2E009DAC4C /* Universe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9104F4217BA88B00F4C2EB /* Universe.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		0BB8B9B32185C6700024D474 /* glider2.lif */ = {isa = PBXFileReference; lastKnownFileType = text; path = glider2.lif; sourceTree = "<group>"; };
 		0BB8B9B82185D0160024D474 /* gosperglidergun_106.lif */ = {isa = PBXFileReference; lastKnownFileType = text; path = gosperglidergun_106.lif; sourceTree = "<group>"; };
 		0BB8B9BA2185D4D40024D474 /* switchengine_106.lif */ = {isa = PBXFileReference; lastKnownFileType = text; path = switchengine_106.lif; sourceTree = "<group>"; };
+		0BD2BDCD245584C5005BABF0 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				0B9104F9217BF1B600F4C2EB /* Matrix.swift */,
+				0BD2BDCD245584C5005BABF0 /* UIView+Autolayout.swift */,
 			);
 			path = Generic;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				0B9104FA217BF1B600F4C2EB /* Matrix.swift in Sources */,
 				0B9104C9217BA80700F4C2EB /* UniverseViewController.swift in Sources */,
 				0B2F568F2184F09D001EC06F /* LifeFormatDecoder.swift in Sources */,
+				0BD2BDCE245584C5005BABF0 /* UIView+Autolayout.swift in Sources */,
 				0B1B683A2184D71F0068B962 /* NeighboursLookup.swift in Sources */,
 				0B2F568B2184E57A001EC06F /* PatternsFactory.swift in Sources */,
 				0B1B683F2184D9170068B962 /* SphericLookup.swift in Sources */,

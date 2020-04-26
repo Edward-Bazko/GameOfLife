@@ -26,7 +26,7 @@ class PatternsFactory {
     static func makeSwitchEngine() -> Pattern {
         return Pattern(name: "Switch Engine", cells: loadPatternFrom(fileName: "switchengine_106"))
     }
-    
+        
     static func loadPatternFrom(fileName: String) -> Matrix<Cell> {
         let bundle = Bundle(for: PatternsFactory.self)
         let path = bundle.url(forResource: fileName, withExtension: "lif")!

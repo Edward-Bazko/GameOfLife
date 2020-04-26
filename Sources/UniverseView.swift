@@ -4,7 +4,7 @@ protocol UniverseViewDataSource: class {
     func configure(view: UIView, at column: Int, row: Int)
 }
 
-class UniverseView: UIScrollView {
+class UniverseView: UIView {
     let cellSize: CGSize
     let columns: Int
     let rows: Int
@@ -18,9 +18,9 @@ class UniverseView: UIScrollView {
         self.rows = rows
         self.cells = Matrix(width: columns, height: rows, fillingWith: UIView())
         super.init(frame: frame)
-        let contentWidth = Int(cellSize.width) * columns
-        let contentHeight = Int(cellSize.height) * columns
-        self.contentSize = CGSize(width: contentWidth, height: contentHeight)
+//        let contentWidth = Int(cellSize.width) * columns
+//        let contentHeight = Int(cellSize.height) * columns
+        // self.contentSize = CGSize(width: contentWidth, height: contentHeight)
     }
     
     

@@ -15,7 +15,7 @@ class Universe {
     
     init(matrix: Matrix<Cell>,
          rule: Rule = ConwaysRule(),
-         lookup: NeighboursLookup = BoundedLookup()) {
+         lookup: NeighboursLookup = SphericLookup()) {
         self.matrix = matrix
         self.rule = rule
         self.lookup = lookup
@@ -27,9 +27,7 @@ class Universe {
         DispatchQueue.global().async {
             while !self.paused {
                 self.tick()
-                DispatchQueue.main.sync {
-                    self.onNextGeneration()
-                }
+                DispatchQueue.main.sync(execute: self.onNextGeneration)
             }
         }
     }
