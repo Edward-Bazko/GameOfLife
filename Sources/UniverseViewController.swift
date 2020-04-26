@@ -16,14 +16,21 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
         }
     }
     
-    private func refreshUniverse() {
+    private func refreshUniverse(seed: Bool = false) {
         let size = UIScreen.main.bounds
         
         var m = Matrix<Cell>(width: Int(size.width / cellSide),
                              height: Int(size.height / cellSide),
                              fillingWith: .dead)
         
-        m.put(matrix: pattern.cells, x: 10, y: 10)
+        if seed {
+            m.enumerateElements { column, row, _ in
+                m[column, row] = Bool.random() ? .alive : .dead
+            }
+        }
+        else {
+            m.put(matrix: pattern.cells, x: 10, y: 10)
+        }
         
         universe = Universe(matrix: m)
         universe.onNextGeneration = { [unowned self] in
@@ -68,8 +75,14 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
             }))
         }
         picker.addAction(UIAlertAction(title: "Random", style: .default, handler: { _ in
-            self.universe.seed()
+            self.refreshUniverse(seed: true)
         }))
+        
+        let more = UIAlertAction(title: "More patterns are coming soon...", style: .default, handler: nil)
+        more.isEnabled = false
+        
+        picker.addAction(more)
+        
         picker.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(picker, animated: true, completion: nil)

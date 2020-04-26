@@ -35,13 +35,7 @@ class Universe {
     func pause() {
         paused = true
     }
-    
-    func seed() {
-        matrix.enumerateElements { column, row, _ in
-            matrix[column, row] = Bool.random() ? .alive : .dead
-        }
-    }
-    
+        
     func tick() {
         var generation = matrix
         matrix.enumerateElements { column, row, cell in
