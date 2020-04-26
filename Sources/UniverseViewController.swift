@@ -33,8 +33,8 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
         }
         
         universe = Universe(matrix: m)
-        universe.onNextGeneration = { [unowned self] in
-            self.reloadUniverseView()
+        universe.onNextGeneration = { [weak self] in
+            self?.reloadUniverseView()
         }
         universe.play()
     }
@@ -91,6 +91,7 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
     
     private func reloadUniverseView() {
         if isViewLoaded {
+            universeView.setNeedsDisplay()
             universeView.reload()
         }
     }

@@ -10,6 +10,7 @@ class Universe {
     private var lookup: NeighboursLookup
     private var paused = true
     private(set) var matrix: Matrix<Cell>
+    private var timer: Timer?
     
     var onNextGeneration: () -> () = {}
     
@@ -24,16 +25,16 @@ class Universe {
     func play() {
         guard paused else { return }
         paused = false
-        DispatchQueue.global().async {
-            while !self.paused {
-                self.tick()
-                DispatchQueue.main.sync(execute: self.onNextGeneration)
-            }
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1/60, repeats: true) { [weak self] _ in
+            self?.tick()
         }
     }
     
     func pause() {
         paused = true
+        timer?.invalidate()
+        timer = nil
     }
         
     func tick() {
@@ -43,5 +44,10 @@ class Universe {
             generation[column, row] = rule.apply(for: cell, aliveNeighboursCount: aliveCount)
         }
         matrix = generation
+        onNextGeneration()
+    }
+    
+    deinit {
+        print("bye")
     }
 }
