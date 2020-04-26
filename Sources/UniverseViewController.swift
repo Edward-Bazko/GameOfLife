@@ -35,13 +35,12 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        universeView = UniverseView(frame: UIScreen.main.bounds,
+        universeView = UniverseView(frame: .zero,
                                     columns: universe.matrix.width,
                                     rows: universe.matrix.height,
                                     cellSize: CGSize(width: cellSide, height: cellSide))
 
         universeView.dataSource = self
-        universeView.translatesAutoresizingMaskIntoConstraints = false
 
         view.addSubview(universeView)
         universeView.fillSuperview()

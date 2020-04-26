@@ -18,18 +18,14 @@ class UniverseView: UIView {
         self.rows = rows
         self.cells = Matrix(width: columns, height: rows, fillingWith: UIView())
         super.init(frame: frame)
-//        let contentWidth = Int(cellSize.width) * columns
-//        let contentHeight = Int(cellSize.height) * columns
-        // self.contentSize = CGSize(width: contentWidth, height: contentHeight)
+        backgroundColor = .white
     }
-    
-    
+        
     func reload() {
         cells.enumerateElements { column, row, view in
             dataSource?.configure(view: view, at: column, row: row)
         }
     }
-    
     
     override func willMove(toSuperview newSuperview: UIView?) {
         guard let _ = newSuperview else { return }
