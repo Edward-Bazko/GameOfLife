@@ -1,3 +1,5 @@
+// http://www.conwaylife.com/wiki/Life_1.06
+
 import Foundation
 
 enum LifeDecodingError: Error {
