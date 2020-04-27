@@ -24,27 +24,27 @@ class LifeFormatDecoderTestCase: XCTestCase {
         let glider = PatternsFactory.makeGlider().cells
         assertIsGlider(pattern: glider)
     }
+}
+
+func assertIsGlider(pattern glider: Matrix<Cell>) {
+    XCTAssertEqual(glider.width, 3)
+    XCTAssertEqual(glider.height, 3)
     
-    func assertIsGlider(pattern glider: Matrix<Cell>) {
-        XCTAssertEqual(glider.width, 3)
-        XCTAssertEqual(glider.height, 3)
-        
-        XCTAssertEqual(glider[0, 0], .dead)
-        XCTAssertEqual(glider[1, 0], .alive)
-        XCTAssertEqual(glider[2, 0], .dead)
-        
-        XCTAssertEqual(glider[0, 1], .dead)
-        XCTAssertEqual(glider[1, 1], .dead)
-        XCTAssertEqual(glider[2, 1], .alive)
-        
-        XCTAssertEqual(glider[0, 2], .alive)
-        XCTAssertEqual(glider[1, 2], .alive)
-        XCTAssertEqual(glider[2, 2], .alive)
-    }
+    XCTAssertEqual(glider[0, 0], .dead)
+    XCTAssertEqual(glider[1, 0], .alive)
+    XCTAssertEqual(glider[2, 0], .dead)
+    
+    XCTAssertEqual(glider[0, 1], .dead)
+    XCTAssertEqual(glider[1, 1], .dead)
+    XCTAssertEqual(glider[2, 1], .alive)
+    
+    XCTAssertEqual(glider[0, 2], .alive)
+    XCTAssertEqual(glider[1, 2], .alive)
+    XCTAssertEqual(glider[2, 2], .alive)
 }
 
 // http://www.conwaylife.com/wiki/Life_1.06
-let gliderPattern = """
+private let gliderPattern = """
 #Life 1.06
 0 -1
 1 0
@@ -54,18 +54,18 @@ let gliderPattern = """
 """.data(using: .ascii)!
 
 
-let noHeaderSample = """
+private let noHeaderSample = """
 0 2
 1 0
 """.data(using: .ascii)!
 
-let invalid1 = """
+private let invalid1 = """
 #Life 1.06
 0
 1 0
 """.data(using: .ascii)!
 
-let invalid2 = """
+private let invalid2 = """
 #Life 1.06
 0 1
 1 0

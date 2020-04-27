@@ -2,12 +2,13 @@ import XCTest
 
 class PlaintextDecoderTestCase: XCTestCase {
     let sut = PlaintextDecoder()
-
+    
     func test_glider_decode() {
         let cells = try! sut.decode(from: glider).cells
         
         XCTAssertEqual(cells.width, 3)
         XCTAssertEqual(cells.height, 3)
+        
         
         XCTAssertEqual(cells[0, 0], Cell.dead)
         XCTAssertEqual(cells[1, 0], Cell.alive)
@@ -16,7 +17,7 @@ class PlaintextDecoderTestCase: XCTestCase {
         XCTAssertEqual(cells[0, 1], Cell.dead)
         XCTAssertEqual(cells[1, 1], Cell.dead)
         XCTAssertEqual(cells[2, 1], Cell.alive)
-
+        
         XCTAssertEqual(cells[0, 2], Cell.alive)
         XCTAssertEqual(cells[1, 2], Cell.alive)
         XCTAssertEqual(cells[2, 2], Cell.alive)
@@ -45,7 +46,7 @@ class PlaintextDecoderTestCase: XCTestCase {
     }
 }
 
-let glider = """
+private let glider = """
 !Name: Glider
 !
 .O.
@@ -54,7 +55,7 @@ OOO
 """.data(using: .ascii)!
 
 
-let gosper_gun = """
+private let gosper_gun = """
 !Name: Gosper glider gun
 !
 ........................O...........
