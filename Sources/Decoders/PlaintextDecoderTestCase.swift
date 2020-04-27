@@ -5,22 +5,7 @@ class PlaintextDecoderTestCase: XCTestCase {
     
     func test_glider_decode() {
         let cells = try! sut.decode(from: glider).cells
-        
-        XCTAssertEqual(cells.width, 3)
-        XCTAssertEqual(cells.height, 3)
-        
-        
-        XCTAssertEqual(cells[0, 0], Cell.dead)
-        XCTAssertEqual(cells[1, 0], Cell.alive)
-        XCTAssertEqual(cells[2, 0], Cell.dead)
-        
-        XCTAssertEqual(cells[0, 1], Cell.dead)
-        XCTAssertEqual(cells[1, 1], Cell.dead)
-        XCTAssertEqual(cells[2, 1], Cell.alive)
-        
-        XCTAssertEqual(cells[0, 2], Cell.alive)
-        XCTAssertEqual(cells[1, 2], Cell.alive)
-        XCTAssertEqual(cells[2, 2], Cell.alive)
+        assertIsGlider(pattern: cells)
     }
     
     func test_gosper_gun_decode() {
@@ -41,8 +26,7 @@ class PlaintextDecoderTestCase: XCTestCase {
     
     func test_header() {
         let pattern = try! sut.decode(from: gosper_gun)
-        
-        XCTAssertEqual(pattern.info, ["Name: Gosper glider gun"])
+        XCTAssertEqual(pattern.comment, ["Name: Gosper glider gun"])
     }
 }
 

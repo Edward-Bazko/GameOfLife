@@ -2,17 +2,10 @@
 
 import Foundation
 
-struct RLEPattern {
-    var cells: Matrix<Cell>
-    var comment: [String]
-    var name: String?
-    var author: String?
-}
-
 class RLEDecoder {
-    func decode(from data: Data) throws -> RLEPattern {
+    func decode(from data: Data) throws -> Pattern {
         guard let string = String(data: data, encoding: .ascii) else {
-            throw LifeDecodingError.dataCorrupted
+            throw DecodingError.dataCorrupted
         }
         return try DecodingItem(string: string).decode()
     }
@@ -30,11 +23,11 @@ private class DecodingItem {
         self.lines = string.components(separatedBy: .newlines)
     }
     
-    func decode() throws -> RLEPattern {
+    func decode() throws -> Pattern {
         scanHeader()
         try scanDimensions()
         try scanSequence()
-        return RLEPattern(cells: cells!, comment: comment, name: name, author: author)
+        return Pattern(cells: cells!, comment: comment, name: name, author: author)
     }
     
     private func scanHeader() {
@@ -61,12 +54,12 @@ private class DecodingItem {
         let scanner = Scanner(string: lines[cursorLine])
         
         _ = scanner.scanString("x = ")
-        guard let width = scanner.scanInt() else { throw LifeDecodingError.dataCorrupted }
+        guard let width = scanner.scanInt() else { throw DecodingError.dataCorrupted }
         
         _ = scanner.scanString(",")
         _ = scanner.scanString("y = ")
         
-        guard let height = scanner.scanInt() else { throw LifeDecodingError.dataCorrupted }
+        guard let height = scanner.scanInt() else { throw DecodingError.dataCorrupted }
         
         cells = Matrix<Cell>(width: width, height: height, fillingWith: .dead)
         
@@ -76,7 +69,7 @@ private class DecodingItem {
     private func scanSequence() throws {
         let line = lines.dropFirst(cursorLine).joined()
         
-        guard let endIndex = line.firstIndex(of: "!") else { throw LifeDecodingError.dataCorrupted }
+        guard let endIndex = line.firstIndex(of: "!") else { throw DecodingError.dataCorrupted }
         
         let seq = String(line.prefix(upTo: endIndex))
         
@@ -103,7 +96,7 @@ private class DecodingItem {
                     columnIndex = 0
                     continue
                     
-                default: throw LifeDecodingError.dataCorrupted
+                default: throw DecodingError.dataCorrupted
                 }
             }
             

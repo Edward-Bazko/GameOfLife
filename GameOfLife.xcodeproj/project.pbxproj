@@ -19,8 +19,8 @@
 		0B2F56892184DCD3001EC06F /* ConwaysRuleTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F56882184DCD3001EC06F /* ConwaysRuleTestCase.swift */; };
 		0B2F568B2184E57A001EC06F /* PatternsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F568A2184E57A001EC06F /* PatternsFactory.swift */; };
 		0B2F568C2184E57A001EC06F /* PatternsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F568A2184E57A001EC06F /* PatternsFactory.swift */; };
-		0B2F568F2184F09D001EC06F /* LifeFormatDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F568E2184F09D001EC06F /* LifeFormatDecoder.swift */; };
-		0B2F56902184F09D001EC06F /* LifeFormatDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F568E2184F09D001EC06F /* LifeFormatDecoder.swift */; };
+		0B2F568F2184F09D001EC06F /* LifeDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F568E2184F09D001EC06F /* LifeDecoder.swift */; };
+		0B2F56902184F09D001EC06F /* LifeDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F568E2184F09D001EC06F /* LifeDecoder.swift */; };
 		0B2F5692218501B1001EC06F /* hwss_106.lif in Resources */ = {isa = PBXBuildFile; fileRef = 0B2F5691218501B1001EC06F /* hwss_106.lif */; };
 		0B2F56B4218522B4001EC06F /* LifeFormatDecoderTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F56B3218522B4001EC06F /* LifeFormatDecoderTestCase.swift */; };
 		0B9104C7217BA80700F4C2EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9104C6217BA80700F4C2EB /* AppDelegate.swift */; };
@@ -67,7 +67,7 @@
 		0B2F56852184DC7E001EC06F /* ConwayRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayRule.swift; sourceTree = "<group>"; };
 		0B2F56882184DCD3001EC06F /* ConwaysRuleTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwaysRuleTestCase.swift; sourceTree = "<group>"; };
 		0B2F568A2184E57A001EC06F /* PatternsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternsFactory.swift; sourceTree = "<group>"; };
-		0B2F568E2184F09D001EC06F /* LifeFormatDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeFormatDecoder.swift; sourceTree = "<group>"; };
+		0B2F568E2184F09D001EC06F /* LifeDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeDecoder.swift; sourceTree = "<group>"; };
 		0B2F5691218501B1001EC06F /* hwss_106.lif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hwss_106.lif; sourceTree = "<group>"; };
 		0B2F56B3218522B4001EC06F /* LifeFormatDecoderTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeFormatDecoderTestCase.swift; sourceTree = "<group>"; };
 		0B442A872184DABD001D4955 /* InfoTests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = InfoTests.plist; sourceTree = "<group>"; };
@@ -131,12 +131,12 @@
 			isa = PBXGroup;
 			children = (
 				0B2F568A2184E57A001EC06F /* PatternsFactory.swift */,
-				0B2F568E2184F09D001EC06F /* LifeFormatDecoder.swift */,
+				0B2F568E2184F09D001EC06F /* LifeDecoder.swift */,
 				0B2F56B3218522B4001EC06F /* LifeFormatDecoderTestCase.swift */,
 				0BD2DBB62456D05A005BABF0 /* PlaintextDecoder.swift */,
 				0BD2DBB82456D0CC005BABF0 /* PlaintextDecoderTestCase.swift */,
-				0BD2DBBB2456DF87005BABF0 /* RLEDecoderTestCase.swift */,
 				0BD2DBBD2456DF9B005BABF0 /* RLEDecoder.swift */,
+				0BD2DBBB2456DF87005BABF0 /* RLEDecoderTestCase.swift */,
 			);
 			path = Decoders;
 			sourceTree = "<group>";
@@ -326,7 +326,7 @@
 				0B2F56832184DC54001EC06F /* Rule.swift in Sources */,
 				0B9104FA217BF1B600F4C2EB /* Matrix.swift in Sources */,
 				0B9104C9217BA80700F4C2EB /* UniverseViewController.swift in Sources */,
-				0B2F568F2184F09D001EC06F /* LifeFormatDecoder.swift in Sources */,
+				0B2F568F2184F09D001EC06F /* LifeDecoder.swift in Sources */,
 				0BD2BDCE245584C5005BABF0 /* UIView+Autolayout.swift in Sources */,
 				0BD2DBBE2456DF9B005BABF0 /* RLEDecoder.swift in Sources */,
 				0B1B683A2184D71F0068B962 /* NeighboursLookup.swift in Sources */,
@@ -344,7 +344,7 @@
 				0BD2DBBA2456D145005BABF0 /* PlaintextDecoder.swift in Sources */,
 				0BF7E91721824C2E009DAC4C /* Universe.swift in Sources */,
 				0B9BF49A217F8A330027AB1A /* BoundedLookupTestCase.swift in Sources */,
-				0B2F56902184F09D001EC06F /* LifeFormatDecoder.swift in Sources */,
+				0B2F56902184F09D001EC06F /* LifeDecoder.swift in Sources */,
 				0B2F56872184DC7E001EC06F /* ConwayRule.swift in Sources */,
 				0B9104FD217BF9CE00F4C2EB /* UniverseTests.swift in Sources */,
 				0B2F56842184DC54001EC06F /* Rule.swift in Sources */,

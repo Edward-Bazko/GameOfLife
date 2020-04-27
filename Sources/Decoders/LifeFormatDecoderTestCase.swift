@@ -1,23 +1,23 @@
 import XCTest
 
-class LifeFormatDecoderTestCase: XCTestCase {
-    let decoder = LifeFormatDecoder()
+class LifeDecoderTestCase: XCTestCase {
+    let decoder = LifeDecoder()
 
     func test_throws() {
         XCTAssertThrowsError(try decoder.decode(from: noHeaderSample)) { error in
-            XCTAssertEqual(error as? LifeDecodingError, LifeDecodingError.noHeaderLine)
+            XCTAssertEqual(error as? DecodingError, DecodingError.noHeaderLine)
         }
         XCTAssertThrowsError(try decoder.decode(from: invalid1)) { error in
-            XCTAssertEqual(error as? LifeDecodingError, LifeDecodingError.dataCorrupted)
+            XCTAssertEqual(error as? DecodingError, DecodingError.dataCorrupted)
         }
         XCTAssertThrowsError(try decoder.decode(from: invalid2)) { error in
-            XCTAssertEqual(error as? LifeDecodingError, LifeDecodingError.dataCorrupted)
+            XCTAssertEqual(error as? DecodingError, DecodingError.dataCorrupted)
         }
     }
     
     func test_glider() {
         let glider = try! decoder.decode(from: gliderPattern)
-        assertIsGlider(pattern: glider)
+        assertIsGlider(pattern: glider.cells)
     }
     
     func test_loading() {

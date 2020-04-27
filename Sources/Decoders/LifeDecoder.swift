@@ -2,24 +2,24 @@
 
 import Foundation
 
-enum LifeDecodingError: Error {
+enum DecodingError: Error {
     case dataCorrupted
     case noHeaderLine
 }
 
-class LifeFormatDecoder {
-    func decode(from data: Data) throws -> Matrix<Cell> {
+class LifeDecoder {
+    func decode(from data: Data) throws -> Pattern {
         guard let string = String(data: data, encoding: .ascii) else {
-            throw LifeDecodingError.dataCorrupted
+            throw DecodingError.dataCorrupted
         }
         
         let lines = string.components(separatedBy: .newlines)
         if lines.count == 0 {
-            throw LifeDecodingError.dataCorrupted
+            throw DecodingError.dataCorrupted
         }
         
         if lines.first?.starts(with: "#Life 1.06") == false {
-            throw LifeDecodingError.noHeaderLine
+            throw DecodingError.noHeaderLine
         }
         
         var tuples = [(Int, Int)]()
@@ -31,10 +31,10 @@ class LifeFormatDecoder {
             let scanner = Scanner(string: line)
             var x: Int = 0; var y: Int = 0
             if scanner.scanInt(&x) == false {
-                throw LifeDecodingError.dataCorrupted
+                throw DecodingError.dataCorrupted
             }
             if scanner.scanInt(&y) == false {
-                throw LifeDecodingError.dataCorrupted
+                throw DecodingError.dataCorrupted
             }
             tuples.append((x, y))
             maxX = max(maxX, x); minX = min(minX, x)
@@ -50,7 +50,7 @@ class LifeFormatDecoder {
             m[x + abs(minX), y + abs(minY)] = .alive
         }
         
-        return m
+        return Pattern(cells: m)
     }
 }
 

@@ -1,8 +1,10 @@
 import Foundation
 
 struct Pattern {
-    var name: String
     var cells: Matrix<Cell>
+    var comment: [String]?
+    var name: String?
+    var author: String?
 }
 
 class PatternsFactory {
@@ -12,27 +14,28 @@ class PatternsFactory {
     }
     
     static func makeHeavyweightSpaceShip() -> Pattern {
-        return Pattern(name: "Heavyweight Space Ship", cells: loadPatternFrom(fileName: "hwss_106"))
+        return loadPatternFrom("hwss_106", "Heavyweight Space Ship")
     }
     
     static func makeGlider() -> Pattern {
-        return Pattern(name: "Glider", cells: loadPatternFrom(fileName: "glider"))
+        return loadPatternFrom("glider", "Glider")
     }
-    
+
     static func makeGosperGliderGun() -> Pattern {
-        return Pattern(name: "Gosper Glider Gun", cells: loadPatternFrom(fileName: "gosperglidergun_106"))
+        return loadPatternFrom("gosperglidergun_106", "Gosper Glider Gun")
     }
-    
+
     static func makeSwitchEngine() -> Pattern {
-        return Pattern(name: "Switch Engine", cells: loadPatternFrom(fileName: "switchengine_106"))
+        return loadPatternFrom("switchengine_106", "Switch Engine")
     }
         
-    static func loadPatternFrom(fileName: String) -> Matrix<Cell> {
+    static func loadPatternFrom(_ fileName: String, _ name: String) -> Pattern {
         let bundle = Bundle(for: PatternsFactory.self)
         let path = bundle.url(forResource: fileName, withExtension: "lif")!
         let data = try! Data(contentsOf: path)
-        let decoder = LifeFormatDecoder()
-        let matrix = try! decoder.decode(from: data)
-        return matrix
+        let decoder = LifeDecoder()
+        var pattern = try! decoder.decode(from: data)
+        pattern.name = name
+        return pattern
     }
 }

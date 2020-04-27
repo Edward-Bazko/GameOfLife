@@ -2,20 +2,16 @@
 
 import Foundation
 
-struct PlaintextPattern {
-    let cells: Matrix<Cell>
-    let info: [String]
-}
-
 class PlaintextDecoder {
-    func decode(from data: Data) throws -> PlaintextPattern {
+    
+    func decode(from data: Data) throws -> Pattern {
         guard let string = String(data: data, encoding: .ascii) else {
-            throw LifeDecodingError.dataCorrupted
+            throw DecodingError.dataCorrupted
         }
         
         let lines = string.components(separatedBy: .newlines)
         if lines.count == 0 {
-            throw LifeDecodingError.dataCorrupted
+            throw DecodingError.dataCorrupted
         }
         
         var parsed = [[Cell]]()
@@ -42,6 +38,6 @@ class PlaintextDecoder {
             }
         }
         
-        return PlaintextPattern(cells: matrix, info: info)
+        return Pattern(cells: matrix, comment: info)
     }
 }
