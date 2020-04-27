@@ -43,7 +43,7 @@ private class DecodingItem {
             cursorLine = index
             
             if line.starts(with: "#") {
-            
+                
             }
             else {
                 break
@@ -68,17 +68,18 @@ private class DecodingItem {
     }
     
     private func scanSequence() throws {
-        let line = lines[cursorLine]
+        let line = lines.dropFirst(cursorLine).joined()
+        
         guard let endIndex = line.firstIndex(of: "!") else { throw LifeDecodingError.dataCorrupted }
+        
         let seq = String(line.prefix(upTo: endIndex))
         
         let scanner = Scanner(string: seq)
         var rowIndex = 0
         var columnIndex = 0
-        var done = false
         
-        while !scanner.isAtEnd, !done {
-
+        while !scanner.isAtEnd {
+            
             var count = 1
             var cell: Cell = .dead
             
@@ -90,14 +91,10 @@ private class DecodingItem {
                 switch char {
                 case "b": cell = .dead
                 case "o": cell = .alive
-                
+                    
                 case "$":
                     rowIndex += 1
                     columnIndex = 0
-                    continue
-                
-                case "!":
-                    done = true
                     continue
                     
                 default: throw LifeDecodingError.dataCorrupted
