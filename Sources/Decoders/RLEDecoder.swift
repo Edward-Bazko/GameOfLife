@@ -3,7 +3,10 @@
 import Foundation
 
 struct RLEPattern {
-    let cells: Matrix<Cell>
+    var cells: Matrix<Cell>
+    var comment: [String]
+    var name: String?
+    var author: String?
 }
 
 class RLEDecoder {
@@ -16,34 +19,37 @@ class RLEDecoder {
 }
 
 private class DecodingItem {
-    let string: String
     let lines: [String]
-    let scanner: Scanner
-    var width: Int = 0
-    var height: Int = 0
     var cursorLine = 0
     var cells: Matrix<Cell>?
+    var comment: [String] = []
+    var name: String?
+    var author: String?
     
     init(string: String) {
-        self.string = string
-        self.scanner = Scanner(string: string)
         self.lines = string.components(separatedBy: .newlines)
     }
     
     func decode() throws -> RLEPattern {
-        try scanHeader()
+        scanHeader()
         try scanDimensions()
         try scanSequence()
-        return RLEPattern(cells: cells!)
+        return RLEPattern(cells: cells!, comment: comment, name: name, author: author)
     }
     
-    private func scanHeader() throws {
+    private func scanHeader() {
         for (index, line) in lines.enumerated() {
             
             cursorLine = index
             
-            if line.starts(with: "#") {
-                
+            if line.starts(with: "#N ") {
+                name = String(line.dropFirst(3))
+            }
+            else if line.starts(with: "#C ") || line.starts(with: "#c ") {
+                comment.append(String(line.dropFirst(3)))
+            }
+            else if line.starts(with: "#O ") {
+                author = String(line.dropFirst(3))
             }
             else {
                 break

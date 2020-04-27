@@ -6,6 +6,7 @@ class RLEDecoderTestCase: XCTestCase {
     func test() {
         let pattern = try! sut.decode(from: glider)
         assertIsGlider(pattern: pattern.cells)
+        XCTAssertEqual(pattern.comment, ["This is a glider."])
     }
     
     func test_newlines() {
@@ -27,6 +28,9 @@ class RLEDecoderTestCase: XCTestCase {
         for index in 0..<fragment.count {
             XCTAssertEqual(cells[index, 5], fragment[index])
         }
+        
+        XCTAssertEqual(pattern.name, "Gosper glider gun")
+        XCTAssertEqual(pattern.comment, ["This was the first gun discovered.", "As its name suggests, it was discovered by Bill Gosper."])
     }
 }
 
