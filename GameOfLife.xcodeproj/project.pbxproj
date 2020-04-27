@@ -117,14 +117,14 @@
 			path = "Neighbours Lookup";
 			sourceTree = "<group>";
 		};
-		0B2F568D2184E691001EC06F /* Patterns */ = {
+		0B2F568D2184E691001EC06F /* Decoders */ = {
 			isa = PBXGroup;
 			children = (
 				0B2F568A2184E57A001EC06F /* PatternsFactory.swift */,
 				0B2F568E2184F09D001EC06F /* LifeFormatDecoder.swift */,
 				0B2F56B3218522B4001EC06F /* LifeFormatDecoderTestCase.swift */,
 			);
-			path = Patterns;
+			path = Decoders;
 			sourceTree = "<group>";
 		};
 		0B442A882184DB9F001D4955 /* Rules */ = {
@@ -158,8 +158,8 @@
 		0B9104C5217BA80700F4C2EB /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				0B2F568D2184E691001EC06F /* Patterns */,
-				0B9104FE217C039700F4C2EB /* Generic */,
+				0B2F568D2184E691001EC06F /* Decoders */,
+				0B9104FE217C039700F4C2EB /* Generic components */,
 				0B442A882184DB9F001D4955 /* Rules */,
 				0B1B683C2184D7850068B962 /* Neighbours Lookup */,
 				0B9104F4217BA88B00F4C2EB /* Universe.swift */,
@@ -175,13 +175,13 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		0B9104FE217C039700F4C2EB /* Generic */ = {
+		0B9104FE217C039700F4C2EB /* Generic components */ = {
 			isa = PBXGroup;
 			children = (
 				0B9104F9217BF1B600F4C2EB /* Matrix.swift */,
 				0BD2BDCD245584C5005BABF0 /* UIView+Autolayout.swift */,
 			);
-			path = Generic;
+			path = "Generic components";
 			sourceTree = "<group>";
 		};
 		0BB8B9B72185CE280024D474 /* Resources */ = {
