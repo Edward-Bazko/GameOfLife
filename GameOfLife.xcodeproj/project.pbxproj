@@ -120,7 +120,6 @@
 		0B2F568D2184E691001EC06F /* Patterns */ = {
 			isa = PBXGroup;
 			children = (
-				0BB8B9B72185CE280024D474 /* Resources */,
 				0B2F568A2184E57A001EC06F /* PatternsFactory.swift */,
 				0B2F568E2184F09D001EC06F /* LifeFormatDecoder.swift */,
 				0B2F56B3218522B4001EC06F /* LifeFormatDecoderTestCase.swift */,
@@ -141,6 +140,7 @@
 		0B9104BA217BA80700F4C2EB = {
 			isa = PBXGroup;
 			children = (
+				0BB8B9B72185CE280024D474 /* Resources */,
 				0B9104C5217BA80700F4C2EB /* Sources */,
 				0B9104C4217BA80700F4C2EB /* Products */,
 			);
