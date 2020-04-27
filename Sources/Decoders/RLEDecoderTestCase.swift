@@ -32,6 +32,10 @@ class RLEDecoderTestCase: XCTestCase {
         XCTAssertEqual(pattern.name, "Gosper glider gun")
         XCTAssertEqual(pattern.comment, ["This was the first gun discovered.", "As its name suggests, it was discovered by Bill Gosper."])
     }
+    
+    func test_p15bumber() {
+        _ = try! sut.decode(from: p15bumper)
+    }
 }
 
 private let glider = """
@@ -59,3 +63,7 @@ x = 36, y = 9, rule = B3/S23
 obo$10bo5bo7bo$11bo3bo$12b2o!
 """.data(using: .ascii)!
 
+
+private let p15bumper = """
+#N p15bumper.rle\r\n#O Tanner Jacobi, 2016\r\n#C http://conwaylife.com/wiki/P15_bumper\r\n#C http://www.conwaylife.com/patterns/p15bumper.rle\r\nx = 72, y = 64, rule = B3/S23\r\n71bo$69b2o$70b2o9$59bo$58bo$58b3o17$b2o38bo$2o37b2o$2bo37b2o9$12b2o15b\r\no$12bobo13bo$12bo15b3o9$6b2o4b2o6b2o$5bo2bo2bo2bo4bo2bo$5bo2bo2bo2bo5b\r\nobo$6bob4obo7bo$8bo2bo$25b2o$25bo$5b2o6b2o11b3o$3bo4bo2bo4bo11bo$3bo4b\r\no2bo4bo$3bo4bo2bo4bo$5b2o6b2o!
+""".data(using: .ascii)!

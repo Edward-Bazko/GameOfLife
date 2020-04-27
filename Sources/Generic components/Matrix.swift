@@ -39,11 +39,20 @@ struct Matrix<Element>  {
 
 extension Matrix {
     
-    mutating func put(matrix: Matrix<Element>, x: Int, y: Int) {
-        assert(x + matrix.width <= width, "Matrix is too wide")
-        assert(y + matrix.height <= height, "Matrix is too high")
+    mutating func putToCenter(matrix: Matrix<Element>) {
+        if matrix.width > width || matrix.height > height {
+            print("Matrix doesn't fit")
+            return
+        }
+        
+        let centerX = matrix.width / 2
+        let centerY = matrix.height / 2
+        
+        let targetX = width / 2 - centerX
+        let targetY = height / 2 - centerY
+                
         matrix.enumerateElements { col, row, element in
-            self[x + col, y + row] = element
+            self[targetX + col, targetY + row] = element
         }
     }
 }

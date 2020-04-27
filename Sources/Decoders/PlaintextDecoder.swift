@@ -9,7 +9,7 @@ class PlaintextDecoder {
             throw DecodingError.dataCorrupted
         }
         
-        let lines = string.components(separatedBy: .newlines)
+        let lines = string.components(separatedBy: .newlines).filter { !$0.isEmpty }
         if lines.count == 0 {
             throw DecodingError.dataCorrupted
         }

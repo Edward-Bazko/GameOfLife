@@ -35,6 +35,8 @@ class UniverseView: UIView {
             for column in 0...columns - 1 {
                 let cell = UIView(frame: CGRect(x: x, y: y, width: cellSize.width, height: cellSize.height))
                 cell.layer.drawsAsynchronously = true
+                cell.layer.borderWidth = 0.25
+                cell.layer.borderColor = UIColor.lightGray.cgColor
                 cell.isOpaque = true
                 cells[column, row] = cell
                 addSubview(cell)

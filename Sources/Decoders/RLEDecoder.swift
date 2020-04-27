@@ -20,7 +20,7 @@ private class DecodingItem {
     var author: String?
     
     init(string: String) {
-        self.lines = string.components(separatedBy: .newlines)
+        self.lines = string.components(separatedBy: .newlines).filter { !$0.isEmpty }
     }
     
     func decode() throws -> Pattern {
@@ -88,16 +88,19 @@ private class DecodingItem {
             
             if let char = scanner.scanCharacter() {
                 switch char {
-                case "b": cell = .dead
-                case "o": cell = .alive
-                    
+
                 case "$":
                     rowIndex += 1
                     columnIndex = 0
                     continue
                     
-                default: throw DecodingError.dataCorrupted
+                case "b": cell = .dead
+                
+                case "o": fallthrough
+                default:                
+                    cell = .alive
                 }
+                
             }
             
             for x in 0..<count {
