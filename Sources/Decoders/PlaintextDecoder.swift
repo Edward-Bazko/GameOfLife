@@ -13,31 +13,32 @@ class PlaintextDecoder {
         if lines.count == 0 {
             throw DecodingError.dataCorrupted
         }
-        
-        var parsed = [[Cell]]()
+                
         var info: [String] = []
-        var maxWidth = 0
         
         for line in lines {
-            if line.starts(with: "!") {
-                if line.count != 1 {
-                    info.append(String(line.dropFirst()))
-                }
+            if line.starts(with: "!"), line.count != 1 {
+                info.append(String(line.dropFirst()))
             }
-            else {
+        }
+                
+        return Pattern(comment: info, loadCells: {
+            var parsed = [[Cell]]()
+            var maxWidth = 0
+
+            for line in lines {
                 parsed.append(line.map { char in char == "." ? Cell.dead : Cell.alive })
                 maxWidth = max(maxWidth, line.count)
             }
-        }
-
-        var matrix = Matrix<Cell>(width: maxWidth, height: parsed.count, fillingWith: .dead)
-        
-        for (rowIndex, rowCells) in parsed.enumerated() {
-            for (columnIndex, cell) in rowCells.enumerated() {
-                matrix[columnIndex, rowIndex] = cell
-            }
-        }
-        
-        return Pattern(cells: matrix, comment: info)
+            
+            var matrix = Matrix<Cell>(width: maxWidth, height: parsed.count, fillingWith: .dead)
+            
+            for (rowIndex, rowCells) in parsed.enumerated() {
+                for (columnIndex, cell) in rowCells.enumerated() {
+                    matrix[columnIndex, rowIndex] = cell
+                }
+            }            
+            return matrix
+        })
     }
 }

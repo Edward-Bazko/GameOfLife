@@ -34,6 +34,7 @@
 		0B9BF49A217F8A330027AB1A /* BoundedLookupTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9BF499217F8A330027AB1A /* BoundedLookupTestCase.swift */; };
 		0B9BF4A0217FC30D0027AB1A /* BoundedLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9BF49F217FC30D0027AB1A /* BoundedLookup.swift */; };
 		0B9BF4A1217FC31C0027AB1A /* BoundedLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9BF49F217FC30D0027AB1A /* BoundedLookup.swift */; };
+		0BC730F32465C4520004A108 /* PatternsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC730F22465C4520004A108 /* PatternsListViewController.swift */; };
 		0BD2BDCE245584C5005BABF0 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2BDCD245584C5005BABF0 /* UIView+Autolayout.swift */; };
 		0BD2DBB72456D05A005BABF0 /* PlaintextDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2DBB62456D05A005BABF0 /* PlaintextDecoder.swift */; };
 		0BD2DBB92456D0CC005BABF0 /* PlaintextDecoderTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2DBB82456D0CC005BABF0 /* PlaintextDecoderTestCase.swift */; };
@@ -81,6 +82,7 @@
 		0B9BF49D217FC2B90027AB1A /* SphericLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SphericLookup.swift; path = "Sources/Neighbours Lookup/SphericLookup.swift"; sourceTree = SOURCE_ROOT; };
 		0B9BF49F217FC30D0027AB1A /* BoundedLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BoundedLookup.swift; path = "Sources/Neighbours Lookup/BoundedLookup.swift"; sourceTree = SOURCE_ROOT; };
 		0BB138182184AB42000449DA /* SphericLookupTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphericLookupTestCase.swift; sourceTree = "<group>"; };
+		0BC730F22465C4520004A108 /* PatternsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternsListViewController.swift; sourceTree = "<group>"; };
 		0BD2BDCD245584C5005BABF0 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 		0BD2DBB62456D05A005BABF0 /* PlaintextDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaintextDecoder.swift; sourceTree = "<group>"; };
 		0BD2DBB82456D0CC005BABF0 /* PlaintextDecoderTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaintextDecoderTestCase.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				0B9104FC217BF9CE00F4C2EB /* UniverseTests.swift */,
 				0B9104C6217BA80700F4C2EB /* AppDelegate.swift */,
 				0B9104C8217BA80700F4C2EB /* UniverseViewController.swift */,
+				0BC730F22465C4520004A108 /* PatternsListViewController.swift */,
 				0B9104FF217C0B5E00F4C2EB /* UniverseView.swift */,
 				0B9104CD217BA80900F4C2EB /* Assets.xcassets */,
 				0B9104CF217BA80900F4C2EB /* LaunchScreen.storyboard */,
@@ -306,6 +309,7 @@
 				0B9BF4A0217FC30D0027AB1A /* BoundedLookup.swift in Sources */,
 				0BD2DBB72456D05A005BABF0 /* PlaintextDecoder.swift in Sources */,
 				0B2F56862184DC7E001EC06F /* ConwayRule.swift in Sources */,
+				0BC730F32465C4520004A108 /* PatternsListViewController.swift in Sources */,
 				0B910500217C0B5E00F4C2EB /* UniverseView.swift in Sources */,
 				0B2F56832184DC54001EC06F /* Rule.swift in Sources */,
 				0BD2F9A824571223005BABF0 /* Pattern.swift in Sources */,

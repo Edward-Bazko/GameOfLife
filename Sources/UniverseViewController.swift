@@ -34,7 +34,7 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
             }
         }
         else if let pattern = pattern {
-            m.putToCenter(matrix: pattern.cells)
+            m.putToCenter(matrix: pattern.loadCells())
         }
         
         universe = Universe(matrix: m)

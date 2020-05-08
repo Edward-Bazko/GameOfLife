@@ -4,12 +4,12 @@ class PlaintextDecoderTestCase: XCTestCase {
     let sut = PlaintextDecoder()
     
     func test_glider_decode() {
-        let cells = try! sut.decode(from: glider).cells
+        let cells = try! sut.decode(from: glider).loadCells()
         assertIsGlider(pattern: cells)
     }
     
     func test_gosper_gun_decode() {
-        let cells = try! sut.decode(from: gosper_gun).cells
+        let cells = try! sut.decode(from: gosper_gun).loadCells()
         
         XCTAssertEqual(cells.width, 36)
         XCTAssertEqual(cells.height, 9)

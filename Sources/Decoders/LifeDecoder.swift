@@ -50,7 +50,7 @@ class LifeDecoder {
             m[x + abs(minX), y + abs(minY)] = .alive
         }
         
-        return Pattern(cells: m)
+        return Pattern { m }
     }
 }
 

@@ -5,18 +5,18 @@ class RLEDecoderTestCase: XCTestCase {
     
     func test() {
         let pattern = try! sut.decode(from: glider)
-        assertIsGlider(pattern: pattern.cells)
+        assertIsGlider(pattern: pattern.loadCells())
         XCTAssertEqual(pattern.comment, ["This is a glider."])
     }
     
     func test_newlines() {
         let pattern = try! sut.decode(from: also_glider)
-        assertIsGlider(pattern: pattern.cells)
+        assertIsGlider(pattern: pattern.loadCells())
     }
     
     func test_gosper_glider_gun() {
         let pattern = try! sut.decode(from: gosper_glider_gun)
-        let cells = pattern.cells
+        let cells = pattern.loadCells()
         XCTAssertEqual(cells.width, 36)
         XCTAssertEqual(cells.height, 9)
         

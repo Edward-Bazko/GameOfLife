@@ -25,9 +25,12 @@ private class DecodingItem {
     
     func decode() throws -> Pattern {
         scanHeader()
-        try scanDimensions()
-        try scanSequence()
-        return Pattern(cells: cells!, comment: comment, name: name, author: author)
+        
+        return Pattern(name: name, author: author, comment: comment, loadCells: {
+            try! self.scanDimensions()
+            try! self.scanSequence()
+            return self.cells!
+        })
     }
     
     private func scanHeader() {

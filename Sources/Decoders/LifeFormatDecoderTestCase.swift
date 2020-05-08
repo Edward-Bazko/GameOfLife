@@ -17,12 +17,7 @@ class LifeDecoderTestCase: XCTestCase {
     
     func test_glider() {
         let glider = try! decoder.decode(from: gliderPattern)
-        assertIsGlider(pattern: glider.cells)
-    }
-    
-    func test_loading() {
-        let glider = PatternsFactory.makeGlider().cells
-        assertIsGlider(pattern: glider)
+        assertIsGlider(pattern: glider.loadCells())
     }
 }
 
