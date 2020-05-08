@@ -27,6 +27,7 @@ class PlaintextDecoder {
             var maxWidth = 0
 
             for line in lines {
+                if line.starts(with: "!") { continue }
                 parsed.append(line.map { char in char == "." ? Cell.dead : Cell.alive })
                 maxWidth = max(maxWidth, line.count)
             }
@@ -37,7 +38,7 @@ class PlaintextDecoder {
                 for (columnIndex, cell) in rowCells.enumerated() {
                     matrix[columnIndex, rowIndex] = cell
                 }
-            }            
+            }
             return matrix
         })
     }
