@@ -27,9 +27,23 @@ private class DecodingItem {
         scanHeader()
         
         return Pattern(name: name, author: author, comment: comment, loadCells: {
-            try! self.scanDimensions()
-            try! self.scanSequence()
-            return self.cells!
+            if let cells = self.cells {
+                return cells
+            }
+            do {
+                try self.scanDimensions()
+            }
+            catch {
+                print("Failed to scan dimensions: \(error)")
+            }
+            
+            do {
+                try self.scanSequence()
+            }
+            catch {
+                print("Failed to scan sequence: \(error)")
+            }
+            return self.cells ?? Matrix(width: 0, height: 0, fillingWith: .dead)
         })
     }
     

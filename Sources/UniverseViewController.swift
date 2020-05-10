@@ -1,18 +1,15 @@
 import UIKit
 
 class UniverseViewController: UIViewController, UniverseViewDataSource {
-    private var universeView: UniverseView!
+    var universeView: UniverseView!
+    
     private var universe: Universe!
     private let cellSide: CGFloat = 7
     private let aliveColor = UIColor(red: 0, green: 153/255, blue: 51/255, alpha: 1)
-    private let loader = PatternsLoader()
-
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         refreshUniverse()
-        loader.load(completion: {
-            self.pattern = self.loader.patterns.first
-        })
     }
     
     var pattern: Pattern? {
@@ -56,9 +53,6 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
 
         view.addSubview(universeView)
         universeView.fillSuperview()
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(showPicker))
-        universeView.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,26 +61,6 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
     
     override func viewWillDisappear(_ animated: Bool) {
         universe.pause()
-    }
-    
-    @objc private func showPicker() {
-        let picker = UIAlertController(title: "Pattern", message: "Pick desired pattern", preferredStyle: .actionSheet)
-        picker.modalPresentationStyle = .popover
-        picker.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-        
-        loader.patterns.forEach { pattern in
-            picker.addAction(UIAlertAction(title: pattern.name, style: .default, handler: { _ in
-                self.pattern = pattern
-            }))
-        }
-        
-        picker.addAction(UIAlertAction(title: "Random", style: .default, handler: { _ in
-            self.refreshUniverse(seed: true)
-        }))
-                        
-        picker.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        self.present(picker, animated: true, completion: nil)
     }
     
     private func reloadUniverseView() {
