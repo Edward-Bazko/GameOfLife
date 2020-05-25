@@ -11,12 +11,13 @@ class PlaygroundViewController: UniverseViewController {
         
         let back = UIBarButtonItem(barButtonSystemItem: .rewind, target: self, action: #selector(handleBackward))
         
-        setToolbarItems([back, forward], animated: false)
+        let all = UIBarButtonItem(title: "Patterns", style: .plain, target: self, action: #selector(showPicker))
+        
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        setToolbarItems([all, space, back, forward], animated: false)
         navigationController?.isNavigationBarHidden = true
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(showPicker))
-        universeView.addGestureRecognizer(tap)
-        
+                
         loader.load(completion: {
             self.patterns = self.loader.patterns
             self.navigationController?.isToolbarHidden = false

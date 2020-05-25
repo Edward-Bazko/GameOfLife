@@ -7,7 +7,8 @@ class RLEDecoder {
         guard let string = String(data: data, encoding: .ascii) else {
             throw DecodingError.dataCorrupted
         }
-        return try DecodingItem(string: string).decode()
+        let item = DecodingItem(string: string)
+        return try item.decode()
     }
 }
 
@@ -15,6 +16,8 @@ private class DecodingItem {
     let lines: [String]
     var cursorLine = 0
     var cells: Matrix<Cell>?
+    var width = 0
+    var height = 0
     var comment: [String] = []
     var name: String?
     var author: String?
@@ -25,16 +28,16 @@ private class DecodingItem {
     
     func decode() throws -> Pattern {
         scanHeader()
+        try self.scanDimensions()
         
-        return Pattern(name: name, author: author, comment: comment, loadCells: {
+        return Pattern(name: name,
+                       author: author,
+                       comment: comment,
+                       width: width,
+                       height: height,
+                       loadCells: {
             if let cells = self.cells {
                 return cells
-            }
-            do {
-                try self.scanDimensions()
-            }
-            catch {
-                print("Failed to scan dimensions: \(error)")
             }
             
             do {
@@ -78,7 +81,8 @@ private class DecodingItem {
         
         guard let height = scanner.scanInt() else { throw DecodingError.dataCorrupted }
         
-        cells = Matrix<Cell>(width: width, height: height, fillingWith: .dead)
+        self.width = width
+        self.height = height
         
         cursorLine += 1
     }
@@ -93,6 +97,8 @@ private class DecodingItem {
         let scanner = Scanner(string: seq)
         var rowIndex = 0
         var columnIndex = 0
+        
+        cells = Matrix(width: self.width, height: self.height, fillingWith: .dead)
         
         while !scanner.isAtEnd {
             
@@ -117,7 +123,6 @@ private class DecodingItem {
                 default:                
                     cell = .alive
                 }
-                
             }
             
             for x in 0..<count {

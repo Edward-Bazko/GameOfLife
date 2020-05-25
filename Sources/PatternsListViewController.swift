@@ -3,7 +3,8 @@ import UIKit
 class PatternsListViewController: UITableViewController {
     var patterns: [Pattern] = []
     var onPatternSelected: (Pattern) -> Void = { _ in }
-        
+    var current: Pattern?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -21,11 +22,21 @@ class PatternsListViewController: UITableViewController {
         cell.textLabel?.numberOfLines = 0
         cell.detailTextLabel?.text = self.detailText(for: pattern)
         cell.detailTextLabel?.numberOfLines = 0
+        
+        if pattern == current {
+            cell.accessoryType = .checkmark
+            cell.backgroundColor = UIColor.yellow.withAlphaComponent(0.2)
+        }
+        else {
+            cell.accessoryType = .none
+            cell.backgroundColor = nil
+        }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pattern = patterns[indexPath.row]
+        current = pattern
         onPatternSelected(pattern)
     }
     

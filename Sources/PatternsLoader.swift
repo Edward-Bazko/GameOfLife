@@ -14,9 +14,13 @@ class PatternsLoader {
         
         DispatchQueue.global().async {
             let files = try! FileManager.default.contentsOfDirectory(atPath: self.patternsPath)
-            self.patterns = files.compactMap(self.parse)
+            self.patterns = files.compactMap(self.parse).filter(self.isFit)
             DispatchQueue.main.async(execute: completion)
         }
+    }
+    
+    private func isFit(pattern: Pattern) -> Bool {
+        return pattern.width < 53 && pattern.height < 95
     }
     
     private func parse(file: String) -> Pattern? {
