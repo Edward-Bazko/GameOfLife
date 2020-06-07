@@ -20,10 +20,7 @@ class PatternInfoView: UIView {
         nameLabel.font = .preferredFont(forTextStyle: .body)
         authorLabel.font = .preferredFont(forTextStyle: .caption1)
         commentTextView.font = .preferredFont(forTextStyle: .footnote)
-                
-        authorLabel.layer.borderColor = UIColor.red.cgColor
-        authorLabel.layer.borderWidth = 1
-        
+                        
         nameLabel.textColor = .label
         authorLabel.textColor = .label
         commentTextView.textColor = UIColor.label.withAlphaComponent(0.7)

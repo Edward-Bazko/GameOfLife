@@ -15,6 +15,7 @@ class PatternsLoader {
         DispatchQueue.global().async {
             let files = try! FileManager.default.contentsOfDirectory(atPath: self.patternsPath)
             self.patterns = files.compactMap(self.parse).filter(self.isFit)
+            print("Loaded \(self.patterns.count) patterns.")
             DispatchQueue.main.async(execute: completion)
         }
     }
@@ -26,7 +27,6 @@ class PatternsLoader {
     private func parse(file: String) -> Pattern? {
         let url = URL(fileURLWithPath: patternsPath + "/" + file)
         let data = try! Data(contentsOf: url)
-        print("Decoding \(file)")
         
         var pattern: Pattern?
         switch (file as NSString).pathExtension {
