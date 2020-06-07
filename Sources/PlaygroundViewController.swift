@@ -6,7 +6,11 @@ class PlaygroundViewController: UniverseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupNavigation()
+        loadPatterns()
+    }
+    
+    func setupNavigation() {
         let forward = UIBarButtonItem(barButtonSystemItem: .fastForward, target: self, action: #selector(handleForward))
         
         let back = UIBarButtonItem(barButtonSystemItem: .rewind, target: self, action: #selector(handleBackward))
@@ -17,10 +21,27 @@ class PlaygroundViewController: UniverseViewController {
         
         setToolbarItems([all, space, back, forward], animated: false)
         navigationController?.isNavigationBarHidden = true
-                
+    }
+    
+    func loadPatterns() {
+        universeView.alpha = 0.2
+        let activity = UIActivityIndicatorView(style: .large)
+        activity.translatesAutoresizingMaskIntoConstraints = false
+        activity.startAnimating()
+        view.addSubview(activity)
+        NSLayoutConstraint.activate([
+            activity.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activity.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
+        
         loader.load(completion: {
             self.patterns = self.loader.patterns
             self.navigationController?.isToolbarHidden = false
+            
+            UIView.animate(withDuration: 0.25, animations: {
+                self.universeView.alpha = 1
+                activity.alpha = 0
+                self.handleForward()
+            })
         })
     }
     

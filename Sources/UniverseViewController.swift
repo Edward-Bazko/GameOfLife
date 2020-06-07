@@ -21,20 +21,21 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
     private func refreshUniverse(seed: Bool = false) {
         let size = UIScreen.main.bounds
         
-        var m = Matrix<Cell>(width: Int(size.width / cellSide),
-                             height: Int(size.height / cellSide),
-                             fillingWith: .dead)
+        let width = Int((size.width / cellSide).rounded(.up))
+        let height = Int((size.height / cellSide).rounded(.up))
+        
+        var matrix = Matrix<Cell>(width: width, height: height, fillingWith: .dead)
         
         if seed {
-            m.enumerateElements { column, row, _ in
-                m[column, row] = Bool.random() ? .alive : .dead
+            matrix.enumerateElements { column, row, _ in
+                matrix[column, row] = Bool.random() ? .alive : .dead
             }
         }
         else if let pattern = pattern {
-            m.putToCenter(matrix: pattern.loadCells())
+            matrix.putToCenter(matrix: pattern.loadCells())
         }
         
-        universe = Universe(matrix: m)
+        universe = Universe(matrix: matrix)
         universe.onNextGeneration = { [weak self] in
             self?.reloadUniverseView()
         }
@@ -53,6 +54,7 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
 
         view.addSubview(universeView)
         universeView.fillSuperview()
+        view.backgroundColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {
