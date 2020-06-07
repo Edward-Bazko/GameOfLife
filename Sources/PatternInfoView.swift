@@ -2,9 +2,9 @@ import UIKit
 
 class PatternInfoView: UIView {
     
-    private let nameLabel = UILabel().autolayout()
-    private let authorLabel = UILabel().autolayout()
-    private let commentLabel = UILabel().autolayout()
+    private let nameLabel = UITextView().autolayout()
+    private let authorLabel = UITextView().autolayout()
+    private let commentTextView = UITextView().autolayout()
     
     init() {
         super.init(frame: .zero)
@@ -12,25 +12,37 @@ class PatternInfoView: UIView {
         sv.spacing = 2
         sv.axis = .vertical
         sv.distribution = .fill
+        sv.isLayoutMarginsRelativeArrangement = true
         
         addSubview(sv)
         sv.fillSuperview()
         
         nameLabel.font = .preferredFont(forTextStyle: .body)
         authorLabel.font = .preferredFont(forTextStyle: .caption1)
-        commentLabel.font = .preferredFont(forTextStyle: .footnote)
-        
-        nameLabel.numberOfLines = 0
-        authorLabel.numberOfLines = 0
-        commentLabel.numberOfLines = 0
+        commentTextView.font = .preferredFont(forTextStyle: .footnote)
+                
+        authorLabel.layer.borderColor = UIColor.red.cgColor
+        authorLabel.layer.borderWidth = 1
         
         nameLabel.textColor = .label
         authorLabel.textColor = .label
-        commentLabel.textColor = UIColor.label.withAlphaComponent(0.7)
-                
+        commentTextView.textColor = UIColor.label.withAlphaComponent(0.7)
+
+        [nameLabel, authorLabel, commentTextView].forEach { tv in
+            tv.isScrollEnabled = false
+            tv.isEditable = false
+            tv.isSelectable = true
+            tv.dataDetectorTypes = [.link]
+            tv.backgroundColor = .clear
+            tv.textContainerInset = .init(top: 0, left: 8, bottom: 0, right: 8)
+            tv.textContainer.lineFragmentPadding = 0
+        }
+        
+        nameLabel.textContainerInset.top = 8
+        
         sv.addArrangedSubview(nameLabel)
         sv.addArrangedSubview(authorLabel)
-        sv.addArrangedSubview(commentLabel)
+        sv.addArrangedSubview(commentTextView)
         
         backgroundColor = UIColor.white.withAlphaComponent(0.7)
     }
@@ -38,13 +50,16 @@ class PatternInfoView: UIView {
     required init?(coder: NSCoder) { fatalError() }
     
     func renderPattern(_ pattern: Pattern) {
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 0.15, animations: {
             self.alpha = 0
         }) { _ in
             self.nameLabel.text = pattern.name
             self.authorLabel.text = pattern.author
-            self.commentLabel.text = pattern.comment?.joined(separator: "\n")
-            UIView.animate(withDuration: 0.2, animations: {
+            self.commentTextView.text = pattern.comment?.joined(separator: "\n")
+            
+            self.authorLabel.isScrollEnabled = pattern.author == nil // HACK: text view shoud be zero-height when author is nil
+            
+            UIView.animate(withDuration: 0.15, animations: {
                 self.alpha = 1
             }, completion: nil)
         }

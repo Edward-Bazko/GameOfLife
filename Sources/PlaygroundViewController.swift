@@ -24,7 +24,7 @@ class PlaygroundViewController: UniverseViewController {
     private func setupNavigation() {
         let forward = UIBarButtonItem(barButtonSystemItem: .fastForward, target: self, action: #selector(handleForward))
         let back = UIBarButtonItem(barButtonSystemItem: .rewind, target: self, action: #selector(handleBackward))
-        let all = UIBarButtonItem(title: "Patterns", style: .plain, target: self, action: #selector(showPicker))
+        let all = UIBarButtonItem(title: "All Patterns", style: .plain, target: self, action: #selector(showPicker))
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
         setToolbarItems([all, space, back, forward], animated: false)

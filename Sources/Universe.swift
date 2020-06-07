@@ -46,8 +46,4 @@ class Universe {
         matrix = generation
         onNextGeneration()
     }
-    
-    deinit {
-        print("bye")
-    }
 }
