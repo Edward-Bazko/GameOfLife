@@ -2,28 +2,44 @@ import UIKit
 
 class PlaygroundViewController: UniverseViewController {
     private let loader = PatternsLoader()
-    var patterns: [Pattern] = []
+    private var patterns: [Pattern] = []
+    private let infoView = PatternInfoView().autolayout()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
+        setupInfoView()
         loadPatterns()
     }
     
-    func setupNavigation() {
+    private func setupInfoView() {
+        view.addSubview(infoView)
+        NSLayoutConstraint.activate([
+            infoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            infoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+            infoView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8)
+        ])
+    }
+    
+    private func setupNavigation() {
         let forward = UIBarButtonItem(barButtonSystemItem: .fastForward, target: self, action: #selector(handleForward))
-        
         let back = UIBarButtonItem(barButtonSystemItem: .rewind, target: self, action: #selector(handleBackward))
-        
         let all = UIBarButtonItem(title: "Patterns", style: .plain, target: self, action: #selector(showPicker))
-        
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
         setToolbarItems([all, space, back, forward], animated: false)
         navigationController?.isNavigationBarHidden = true
     }
     
-    func loadPatterns() {
+    override var pattern: Pattern? {
+        didSet {
+            if let pattern = pattern {
+                infoView.renderPattern(pattern)
+            }
+        }
+    }
+    
+    private func loadPatterns() {
         universeView.alpha = 0.2
         let activity = UIActivityIndicatorView(style: .large)
         activity.translatesAutoresizingMaskIntoConstraints = false
@@ -35,8 +51,7 @@ class PlaygroundViewController: UniverseViewController {
         
         loader.load(completion: {
             self.patterns = self.loader.patterns
-            self.navigationController?.isToolbarHidden = false
-            
+            self.navigationController?.setToolbarHidden(false, animated: true)
             UIView.animate(withDuration: 0.25, animations: {
                 self.universeView.alpha = 1
                 activity.alpha = 0
@@ -54,6 +69,7 @@ class PlaygroundViewController: UniverseViewController {
     @objc private func showPicker() {
         let list = PatternsListViewController(style: .insetGrouped)
         list.patterns = self.patterns
+        list.current = pattern
         list.onPatternSelected = { [unowned self] pattern in
             self.pattern = pattern
             self.dismiss(animated: true, completion: nil)

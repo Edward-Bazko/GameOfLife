@@ -10,7 +10,15 @@ class PatternsListViewController: UITableViewController {
         tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: "Cell")
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(handleClose))
     }
-        
+     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let current = current, let row = patterns.firstIndex(of: current) {
+            let indexPath = IndexPath(row: row, section: 0)
+            tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return patterns.count
     }

@@ -45,6 +45,7 @@
 		0BD2DBBF2456DFFC005BABF0 /* RLEDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2DBBD2456DF9B005BABF0 /* RLEDecoder.swift */; };
 		0BD2F9A824571223005BABF0 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2F9A724571223005BABF0 /* Pattern.swift */; };
 		0BD6DEB724684F7700B28FE5 /* Patterns in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6DEB624684F7700B28FE5 /* Patterns */; };
+		0BDD9BD1248D429A00D376E7 /* PatternInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDD9BD0248D429A00D376E7 /* PatternInfoView.swift */; };
 		0BEDD46E24571B3700EC708E /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2F9A724571223005BABF0 /* Pattern.swift */; };
 		0BF7E91721824C2E009DAC4C /* Universe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9104F4217BA88B00F4C2EB /* Universe.swift */; };
 /* End PBXBuildFile section */
@@ -92,6 +93,7 @@
 		0BD2DBBD2456DF9B005BABF0 /* RLEDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLEDecoder.swift; sourceTree = "<group>"; };
 		0BD2F9A724571223005BABF0 /* Pattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
 		0BD6DEB624684F7700B28FE5 /* Patterns */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Patterns; sourceTree = "<group>"; };
+		0BDD9BD0248D429A00D376E7 /* PatternInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 				0B238C9124686B83009916A8 /* PlaygroundViewController.swift */,
 				0BC730F22465C4520004A108 /* PatternsListViewController.swift */,
 				0B9104FF217C0B5E00F4C2EB /* UniverseView.swift */,
+				0BDD9BD0248D429A00D376E7 /* PatternInfoView.swift */,
 				0B9104CD217BA80900F4C2EB /* Assets.xcassets */,
 				0B9104CF217BA80900F4C2EB /* LaunchScreen.storyboard */,
 				0B9104D2217BA80900F4C2EB /* Info.plist */,
@@ -309,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B9104F5217BA88B00F4C2EB /* Universe.swift in Sources */,
+				0BDD9BD1248D429A00D376E7 /* PatternInfoView.swift in Sources */,
 				0B9BF4A0217FC30D0027AB1A /* BoundedLookup.swift in Sources */,
 				0BD2DBB72456D05A005BABF0 /* PlaintextDecoder.swift in Sources */,
 				0B2F56862184DC7E001EC06F /* ConwayRule.swift in Sources */,
