@@ -62,10 +62,3 @@ class PatternInfoView: UIView {
         }
     }
 }
-
-extension UIView {
-    func autolayout() -> Self {
-        translatesAutoresizingMaskIntoConstraints = false
-        return self
-    }
-}

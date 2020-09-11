@@ -182,7 +182,6 @@
 				0B9104FC217BF9CE00F4C2EB /* UniverseTests.swift */,
 				0B9104C6217BA80700F4C2EB /* AppDelegate.swift */,
 				0B9104C8217BA80700F4C2EB /* UniverseViewController.swift */,
-				0B6FFA1F250B8D20002CE071 /* Rainbow.swift */,
 				0B238C9124686B83009916A8 /* PlaygroundViewController.swift */,
 				0BC730F22465C4520004A108 /* PatternsListViewController.swift */,
 				0B9104FF217C0B5E00F4C2EB /* UniverseView.swift */,
@@ -198,6 +197,7 @@
 		0B9104FE217C039700F4C2EB /* Generic components */ = {
 			isa = PBXGroup;
 			children = (
+				0B6FFA1F250B8D20002CE071 /* Rainbow.swift */,
 				0B9104F9217BF1B600F4C2EB /* Matrix.swift */,
 				0BD2BDCD245584C5005BABF0 /* UIView+Autolayout.swift */,
 			);

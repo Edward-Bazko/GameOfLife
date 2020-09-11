@@ -85,5 +85,9 @@ class PlaygroundViewController: UniverseViewController {
     @objc func handleBackward() {
         self.index = patterns.index(before: index)
     }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }    
 }
 

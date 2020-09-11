@@ -5,7 +5,6 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
     
     private var universe: Universe!
     private let cellSide: CGFloat = 7
-    private let aliveColor = UIColor(red: 0, green: 153/255, blue: 51/255, alpha: 1)
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -90,10 +89,6 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
         return true
     }
     
-    required init?(coder aDecoder: NSCoder) { fatalError() }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
-    }
+    required init?(coder aDecoder: NSCoder) { fatalError() }    
 }
 
