@@ -58,10 +58,12 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         universe.play()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         universe.pause()
     }
     
@@ -74,16 +76,21 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
     
     func configure(view: UIView, at column: Int, row: Int) {
         let cell = universe.matrix[column, row]
-        view.backgroundColor = cell == .alive ? aliveColor : .white
+        view.backgroundColor = cell == .alive ? randomColor() : UIColor.white.withAlphaComponent(0.5)
+    }
+    
+    func randomColor() -> UIColor {
+        UIColor(red: CGFloat.random(in: (0.5...1)),
+                green: CGFloat.random(in: (0.5...1)),
+                blue: CGFloat.random(in: (0.5...1)),
+                alpha: 1)
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait

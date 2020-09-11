@@ -23,6 +23,7 @@
 		0B2F568F2184F09D001EC06F /* LifeDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F568E2184F09D001EC06F /* LifeDecoder.swift */; };
 		0B2F56902184F09D001EC06F /* LifeDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F568E2184F09D001EC06F /* LifeDecoder.swift */; };
 		0B2F56B4218522B4001EC06F /* LifeFormatDecoderTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F56B3218522B4001EC06F /* LifeFormatDecoderTestCase.swift */; };
+		0B6FFA20250B8D20002CE071 /* Rainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6FFA1F250B8D20002CE071 /* Rainbow.swift */; };
 		0B9104C7217BA80700F4C2EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9104C6217BA80700F4C2EB /* AppDelegate.swift */; };
 		0B9104C9217BA80700F4C2EB /* UniverseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9104C8217BA80700F4C2EB /* UniverseViewController.swift */; };
 		0B9104CE217BA80900F4C2EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B9104CD217BA80900F4C2EB /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		0B2F568E2184F09D001EC06F /* LifeDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeDecoder.swift; sourceTree = "<group>"; };
 		0B2F56B3218522B4001EC06F /* LifeFormatDecoderTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeFormatDecoderTestCase.swift; sourceTree = "<group>"; };
 		0B442A872184DABD001D4955 /* InfoTests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = InfoTests.plist; sourceTree = "<group>"; };
+		0B6FFA1F250B8D20002CE071 /* Rainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rainbow.swift; sourceTree = "<group>"; };
 		0B9104C3217BA80700F4C2EB /* GameOfLifeiOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfLifeiOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B9104C6217BA80700F4C2EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B9104C8217BA80700F4C2EB /* UniverseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				0B9104FC217BF9CE00F4C2EB /* UniverseTests.swift */,
 				0B9104C6217BA80700F4C2EB /* AppDelegate.swift */,
 				0B9104C8217BA80700F4C2EB /* UniverseViewController.swift */,
+				0B6FFA1F250B8D20002CE071 /* Rainbow.swift */,
 				0B238C9124686B83009916A8 /* PlaygroundViewController.swift */,
 				0BC730F22465C4520004A108 /* PatternsListViewController.swift */,
 				0B9104FF217C0B5E00F4C2EB /* UniverseView.swift */,
@@ -329,6 +332,7 @@
 				0B1B683A2184D71F0068B962 /* NeighboursLookup.swift in Sources */,
 				0B2F568B2184E57A001EC06F /* PatternsLoader.swift in Sources */,
 				0B1B683F2184D9170068B962 /* SphericLookup.swift in Sources */,
+				0B6FFA20250B8D20002CE071 /* Rainbow.swift in Sources */,
 				0B9104C7217BA80700F4C2EB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

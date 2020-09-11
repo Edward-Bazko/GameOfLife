@@ -10,6 +10,8 @@ class UniverseView: UIView {
     let rows: Int
     var cells: Matrix<UIView>
     
+    private let gradient = CAGradientLayer()
+
     weak var dataSource: UniverseViewDataSource?
     
     init(frame: CGRect, columns: Int, rows: Int, cellSize: CGSize) {
@@ -18,7 +20,16 @@ class UniverseView: UIView {
         self.rows = rows
         self.cells = Matrix(width: columns, height: rows, fillingWith: UIView())
         super.init(frame: frame)
-        backgroundColor = .white
+        addGradient()
+    }
+    
+    func addGradient() {
+        let colors: [UIColor] = [.vividRed, .deepSaffron, .maximumYellow, .green, .blue, .philippineViolet]
+        gradient.frame = frame
+        gradient.colors = colors.map { $0.cgColor }
+        gradient.startPoint = .init(x: 0.5, y: 0)
+        gradient.endPoint = .init(x: 0.5, y: 0.8)
+        layer.insertSublayer(gradient, at: 0)
     }
         
     func reload() {
@@ -48,6 +59,10 @@ class UniverseView: UIView {
         }
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradient.frame = bounds
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
