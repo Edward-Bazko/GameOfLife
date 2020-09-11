@@ -55,7 +55,7 @@ class PlaygroundViewController: UniverseViewController {
             UIView.animate(withDuration: 0.25, animations: {
                 self.universeView.alpha = 1
                 activity.alpha = 0
-                self.handleForward()
+                self.setRandomPattern()
             })
         })
     }
@@ -86,8 +86,8 @@ class PlaygroundViewController: UniverseViewController {
         self.index = patterns.index(before: index)
     }
     
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
-    }    
+    func setRandomPattern() {
+        self.index = Int.random(in: 0..<patterns.count)
+    }
 }
 

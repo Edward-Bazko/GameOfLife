@@ -7,20 +7,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let nc = UINavigationController(rootViewController: PlaygroundViewController())
-        nc.delegate = self
-        
         window = UIWindow(frame: UIScreen.main.bounds)
-        window!.rootViewController = nc
+        window!.rootViewController = UINavigationController(rootViewController: PlaygroundViewController())
         window!.makeKeyAndVisible()
         
         return true
-    }
-}
-
-extension AppDelegate: UINavigationControllerDelegate {
-    
-    func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
-        return navigationController.topViewController?.supportedInterfaceOrientations ?? .allButUpsideDown
     }
 }

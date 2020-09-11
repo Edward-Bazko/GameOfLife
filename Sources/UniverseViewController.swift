@@ -54,6 +54,11 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
         view.addSubview(universeView)
         universeView.fillSuperview()
         view.backgroundColor = .white
+        
+        let doubleTap = UITapGestureRecognizer(target: universeView, action: #selector(universeView.randimizeGradient))
+        doubleTap.numberOfTapsRequired = 2
+        universeView.addGestureRecognizer(doubleTap)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +80,7 @@ class UniverseViewController: UIViewController, UniverseViewDataSource {
     
     func configure(view: UIView, at column: Int, row: Int) {
         let cell = universe.matrix[column, row]
-        view.backgroundColor = cell == .alive ? randomColor() : UIColor.white.withAlphaComponent(0.5)
+        view.backgroundColor = cell == .alive ? randomColor() : UIColor.white.withAlphaComponent(0.6)
     }
     
     func randomColor() -> UIColor {

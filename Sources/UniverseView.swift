@@ -27,8 +27,7 @@ class UniverseView: UIView {
         let colors: [UIColor] = [.vividRed, .deepSaffron, .maximumYellow, .green, .blue, .philippineViolet]
         gradient.frame = frame
         gradient.colors = colors.map { $0.cgColor }
-        gradient.startPoint = .init(x: 0.5, y: 0)
-        gradient.endPoint = .init(x: 0.5, y: 0.8)
+        randimizeGradient()
         layer.insertSublayer(gradient, at: 0)
     }
         
@@ -48,6 +47,7 @@ class UniverseView: UIView {
                 cell.layer.drawsAsynchronously = true
                 cell.layer.borderWidth = 0.25
                 cell.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.25).cgColor
+                cell.layer.cornerRadius = 1
                 cell.isOpaque = true
                 cells[column, row] = cell
                 addSubview(cell)
@@ -58,6 +58,13 @@ class UniverseView: UIView {
             y += cellSize.height
         }
     }
+    
+    @objc func randimizeGradient() {
+        let p1: CGPoint = .init(x: .random(in: 0.3...0.7), y: .random(in: 0...0.3))
+        let p2: CGPoint = .init(x: .random(in: 0.3...0.7), y: .random(in: 0.5...0.8))
+        gradient.startPoint = p1
+        gradient.endPoint = p2
+    }
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -66,5 +73,11 @@ class UniverseView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension CGPoint {
+    func distance(to point: CGPoint) -> CGFloat {
+        return sqrt(pow((point.x - x), 2) + pow((point.y - y), 2))
     }
 }

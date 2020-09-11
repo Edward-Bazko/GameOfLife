@@ -47,8 +47,8 @@ class PatternInfoView: UIView {
     required init?(coder: NSCoder) { fatalError() }
     
     func renderPattern(_ pattern: Pattern) {
-        UIView.animate(withDuration: 0.15, animations: {
-            self.alpha = 0
+        UIView.animate(withDuration: 0.1, animations: {
+            self.alpha = 0.8
         }) { _ in
             self.nameLabel.text = pattern.name
             self.authorLabel.text = pattern.author
@@ -56,7 +56,7 @@ class PatternInfoView: UIView {
             
             self.authorLabel.isScrollEnabled = pattern.author == nil // HACK: text view shoud be zero-height when author is nil
             
-            UIView.animate(withDuration: 0.15, animations: {
+            UIView.animate(withDuration: 0.1, animations: {
                 self.alpha = 1
             }, completion: nil)
         }
