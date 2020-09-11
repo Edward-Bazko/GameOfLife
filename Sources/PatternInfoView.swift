@@ -13,6 +13,7 @@ class PatternInfoView: UIView {
         sv.axis = .vertical
         sv.distribution = .fill
         sv.isLayoutMarginsRelativeArrangement = true
+        sv.directionalLayoutMargins = .init(top: 8, leading: 0, bottom: 8, trailing: 0)
         
         addSubview(sv)
         sv.fillSuperview()
@@ -35,13 +36,12 @@ class PatternInfoView: UIView {
             tv.textContainer.lineFragmentPadding = 0
         }
         
-        nameLabel.textContainerInset.top = 8
-        
         sv.addArrangedSubview(nameLabel)
         sv.addArrangedSubview(authorLabel)
         sv.addArrangedSubview(commentTextView)
         
-        backgroundColor = UIColor.white.withAlphaComponent(0.7)
+        backgroundColor = UIColor.secondarySystemBackground.withAlphaComponent(0.7)
+        layer.cornerRadius = 5
     }
     
     required init?(coder: NSCoder) { fatalError() }
